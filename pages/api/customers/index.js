@@ -1,17 +1,9 @@
 import { pool } from "config/db";
 
 export default async function handler(req, res) {
-  let ti = setTimeout(() => {
-    return res.status(500).json({ error: {
-      message: "Request Timeout !. Your Vercel account must be upgraded to the PRO membership"
-    } });
-  }, 4500);
-
   switch (req.method) {
     case "GET":
-      let result = await getCustomers(req, res)
-      clearTimeout(ti);
-      return result;
+      return await getCustomers(req, res);
     case "POST":
       return await saveCustomer(req, res);
     default:
