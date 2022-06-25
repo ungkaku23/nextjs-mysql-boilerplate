@@ -40,7 +40,7 @@ function CustomerPage({ customer }) {
 
 export const getServerSideProps = async ({ query }) => {
   const { data: customer} = await axios.get(
-    "http://localhost:3000/api/customers/" + query.id
+    `${process.env.NEXT_BASE_URL}/api/customers/` + query.id
   );
 
   console.log(customer)

@@ -16,7 +16,7 @@ function CustomersPage({ customers = [] }) {
   const fetchCustomers = async () => {
     setLocalCustomers([]);
     const { data: fetchedCustomers } = await axios.get(
-      "http://localhost:3000/api/customers"
+      `${process.env.NEXT_BASE_URL}/api/customers`
     );
 
     setLocalCustomers(fetchedCustomers);
@@ -69,7 +69,7 @@ export default CustomersPage;
 
 export const getServerSideProps = async () => {
   const { data: customers } = await axios.get(
-    "http://localhost:3000/api/customers"
+    `${process.env.NEXT_BASE_URL}/api/customers`
   );
 
   return {
