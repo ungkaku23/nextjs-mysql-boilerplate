@@ -13,15 +13,15 @@ function CustomersPage({ customers = [] }) {
     setNoData(customers.length === 0);
   }, []);
 
-  // const fetchCustomers = async () => {
-  //   setLocalCustomers([]);
-  //   const { data: fetchedCustomers } = await axios.get(
-  //     `${process.env.NEXT_BASE_URL}/api/customers`
-  //   );
+  const fetchCustomers = async () => {
+    setLocalCustomers([]);
+    const { data: fetchedCustomers } = await axios.get(
+      `${process.env.NEXT_BASE_URL}/api/customers`
+    );
 
-  //   setLocalCustomers(fetchedCustomers);
-  //   setNoData(fetchedCustomers.length === 0);
-  // };
+    setLocalCustomers(fetchedCustomers);
+    setNoData(fetchedCustomers.length === 0);
+  };
 
   return (
     <Layout>
@@ -45,7 +45,7 @@ function CustomersPage({ customers = [] }) {
             Add New Cusomter
           </button>
         </div>
-        {/* <div className={`relative ${localCustomers.length === 0 ? "flex justify-center" : "overflow-x-auto"} shadow-md sm:rounded-lg`}>
+        <div className={`relative ${localCustomers.length === 0 ? "flex justify-center" : "overflow-x-auto"} shadow-md sm:rounded-lg`}>
           {
             localCustomers.length === 0
             ? isNoData 
@@ -59,7 +59,7 @@ function CustomersPage({ customers = [] }) {
               fetchCustomers={fetchCustomers}
             />
           }
-        </div> */}
+        </div>
       </div>
     </Layout>
   );
@@ -68,13 +68,13 @@ function CustomersPage({ customers = [] }) {
 export default CustomersPage;
 
 export const getServerSideProps = async () => {
-  // const { data: customers } = await axios.get(
-  //   `${process.env.NEXT_BASE_URL}/api/customers`
-  // );
+  const { data: customers } = await axios.get(
+    `${process.env.NEXT_BASE_URL}/api/customers`
+  );
 
   return {
     props: {
-      // customers,
+      customers,
     },
   };
 };
