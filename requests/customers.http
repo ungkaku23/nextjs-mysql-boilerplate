@@ -1,0 +1,27 @@
+### get all customers
+
+GET http://localhost:3000/api/customers
+
+### get a single customer
+GET http://localhost:3000/api/customers/14
+
+### create a single customer
+POST http://localhost:3000/api/customers
+Content-Type: application/json
+
+{
+  "name": "something name 2",
+  "description": "something description"
+}
+
+
+### update a single customer
+PUT http://localhost:3000/api/customers/14
+Content-Type: application/json
+
+{
+  "description": "this is my new description"
+}
+
+### delete a single customer
+DELETE http://localhost:3000/api/customers/14
